@@ -1,0 +1,19 @@
+#include<iostream>
+#include<zlib.h>
+#include<unzip.h>
+
+using namespace std;
+
+int main(){
+
+
+ HZIP hz = OpenZip("D:\\hello.zip",0);
+ZIPENTRY ze; GetZipItem(hz,-1,&ze);
+ int numitems=ze.index;
+ for (int zi=0; zi<numitems; zi++)
+{ ZIPENTRY ze; GetZipItem(hz,zi,&ze);
+  UnzipItem(hz, zi, ze.name);
+}
+CloseZip(hz);
+return 0;
+}
